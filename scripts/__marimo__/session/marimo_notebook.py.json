@@ -1,0 +1,379 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.19.5"
+  },
+  "cells": [
+    {
+      "id": "lEQa",
+      "code_hash": "0856984de0594e44854b5cc95530df41",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Loyalitas (Previous Purchases)</span>\n<ul>\n<li>Tingkat Retensi: Ini adalah kolom paling menarik. Rata-rata pelanggan sudah melakukan 25 kali pembelian sebelumnya.</li>\n<li>Loyalitas Tinggi: Sebanyak 25% pelanggan (Q3) tercatat sudah melakukan pembelian antara 38 hingga 50 kali. Ini adalah segmen \"Loyal\" yang sangat berharga bagi perusahaan.</li>\n<li>Pelanggan Baru: Nilai minimum 1 menunjukkan ada pelanggan yang baru pertama kali berbelanja.</li>\n</ul>\n<span class=\"paragraph\"><strong><em>Kesimpulan untuk Analisis:</em></strong>\nDari data ini, kita bisa menyimpulkan bahwa perusahaan memiliki basis pelanggan yang sangat setia (dilihat dari tingginya angka Previous Purchases), namun perlu strategi untuk meningkatkan nilai rata-rata transaksi agar bisa melewati angka $60 dan memperbaiki rating agar mencapai angka 4.0.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "0febf5e2f98116422d30df1b72c43fff",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Missing Value</strong></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "6f453f565cf1e60d7348bb3f9b173041",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Perhatikan review rating. Artinya, ada 37 pelanggan yang tidak memberikan rating. Maka dari itu missing value akan ditangani terlebih dahulu menggunakan median dengan category sebagai kolom pembantu. Jika hanya mean takutnya jika ada outlier akan menghasilkan bias. Terlebih lagi, melakukan imputasi berdasarkan kategori (seperti kategori produk atau kelompok usia) akan membuat data jauh lebih akurat.</span>\n<span class=\"paragraph\">Misalnya, produk di kategori Clothing mungkin secara umum punya rating yang berbeda dengan Electronics. Mengisi rating yang kosong dengan nilai tengah dari kategori yang sama akan menjaga integritas data.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "ef707b169c2a51267dfe9619d096708e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Feature Engineering (Modeling)</strong></span>\n<ul>\n<li>Agar analisis di SQL dan Power BI nanti lebih tajam, kita perlu membuat kolom baru (fitur) berdasarkan statistik yang ada:</li>\n<li>Age Grouping: Berdasarkan statistik, usia konsumen berkisar antara 18 hingga 70 tahun. Kita bisa membaginya menjadi kategori seperti 'Teen', 'Adult', dan 'Senior'.</li>\n<li>Customer Segmentation (Loyalty): Kolom Previous Purchases menunjukkan angka dari 1 hingga 50. Kita bisa membuat kategori 'New Customer' (pembelian rendah) dan 'Loyal Customer' (pembelian tinggi).</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "5bd14bc2617c0b755be416c0b4f13c80",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Karena kita punya Previous Purchases dan Frequency of Purchases, kita bisa membuat profil loyalitas yang lebih kuat.</span>\n<ul>\n<li>Loyalty Level: Menggabungkan jumlah pembelian masa lalu.</li>\n<li>Shopping Habit: Mengkategorikan seberapa sering mereka belanja.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "111948ea452a648bcbce1ce7edaf0eec",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Analisis Sensitivitas Promo (Sangat Penting untuk Strategi)</span>\n<span class=\"paragraph\">Menggunakan kolom Discount Applied dan Promo Code Used untuk melihat apakah seorang pelanggan adalah \"Pemburu Diskon\".</span>\n<ul>\n<li>Is_Promo_User: Jika Discount Applied adalah 'Yes', maka pelanggan tersebut dipicu oleh promo.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "9f335f580446a99c09f8916de0f68c4e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"question\">Question</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "510c293dc4ef8463c51429720cff8b93",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Q1: Total revenue by Gender (Male vs Female)</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "c0679cd8a53ff8dec98fe963aa665bb9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Q2: Customers with discount who spent more than average</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "0723509490fb595b2ce0810af727b4f6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Q3: Top 5 products with highest average review rating</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "06333f6fb73c156430595fd262c2a623",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Q4: Average Purchase Amount: Standard vs Express Shipping</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "729c48b63cefc5faa558fe371fd9e50f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Q5: Revenue contribution by age group</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "7bbfc5164e675b9a3cbee0bfbdbb984b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Q6: Compare Average Spending &amp; Total Revenue Between Subscriber and Non-Sub</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "ae336f85d869e9377db97b9704755a90",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Q7: Which 5 Product have the highest percentage of purchase with discount applied</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "yCnT",
+      "code_hash": "36d8d6cdc634c431fc26945ddcd61de9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Q8: Top 3 revenue di setiap kategori</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kqZH",
+      "code_hash": "fabd68e7403dba9109d322ea4adf970e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Python Version</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "rEll",
+      "code_hash": "5b0f40616263363a9fe823ba751d407d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Q9: are customer who are repeat buyers (more than 5 previous purchase) also likely to subscribe</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "f3dc2d26b1f00b6649388804c5a49c40",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "09ba7d044697510ef250fdb3a57b78f7",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "219b4c6132d4c06505a5170320f04eb0",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "1ebcccc5eb049258b85e0ff7027b6dff",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "84fe7848279b753141788a0266299fdf",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "25178f7d76ff6b5bc12f1c63c9b36135",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "a0d5d499e0f7394e768944658c05954f",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "9e46e07c3d4958db38cc9af9e32ef775",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "e91439132ef174533c9c32533831e712",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "8ceea61ac689c35a3b83000a298261a7",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "a32d362b6f8eea1b6ffd98020fabc578",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "0d8d07ddb094f82646c2d62707f348bf",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "def54fbcba27045b0190aff98fad312f",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "1a5d05562b07fda2190d1caca6288d8c",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "2666002d06b4aa82a60c60c3ee954a40",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "f2c03b3afc47dea6428b00069be7207d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "d8fcbc9c9bd1d70343ce7ac679636fa9",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "bfc3a011164cbc92758125b3866e0180",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "6944a97d7e2fb10d3c50a3aa67dce153",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "9a911b70d6ce8acd7d9bdd4e6081bc52",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "6106b179625d5e27814aa0f9a7bd1593",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "wlCL",
+      "code_hash": "59c1095ce0c2eac46d7da38f271b80b9",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "wAgl",
+      "code_hash": "31756d2d75432624fae6d95ad606e6cf",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "dGlV",
+      "code_hash": "4833014691ddf2e823a4ebd20766db64",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SdmI",
+      "code_hash": "3a5c369278430c9d6e8d245df42f3f36",
+      "outputs": [],
+      "console": []
+    }
+  ]
+}

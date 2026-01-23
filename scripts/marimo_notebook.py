@@ -13,7 +13,7 @@
 
 import marimo
 
-__generated_with = "0.19.4"
+__generated_with = "0.19.5"
 app = marimo.App()
 
 
@@ -26,9 +26,8 @@ def _():
 
     # Memuat dataset dari folder data
     # Ganti 'nama_file.csv' dengan nama file asli di folder data kamu
-    file_path = r'D:\Aries\PROJECT\retail-consumer-behavior-analysis\data\customer_shopping_behavior.csv'
-    df = pd.read_csv(file_path)
-
+    file_path = r'D:\Workspace Aries\PROJECT\retail-consumer-behavior-analysis\data\customer_shopping_behavior.csv'
+    df= pd.read_csv(file_path)
     return df, mo, pd
 
 
@@ -245,8 +244,14 @@ def _(df):
         'Item Purchased': 'product_name',
         'Previous Purchases': 'total_orders',
         'Subscription Status': 'is_subscriber'
-    })
+    }).convert_dtypes()
     return (df2,)
+
+
+@app.cell
+def _(df2):
+    df2.info()
+    return
 
 
 @app.cell
