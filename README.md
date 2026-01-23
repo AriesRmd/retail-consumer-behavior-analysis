@@ -54,3 +54,14 @@ cd "D:\Path\Ke\Folder\Proyek"
 # Sinkronisasi otomatis (Instal Python 3.13 & Library)
 uv sync
 
+# Sebelum Mulai bekerja (Pull 7 Sync)
+Ambil update terbaru dari GitHub agar kode di PC kamu tidak tertinggal:
+```powershell
+git pull
+uv sync
+
+# Alur Kerja Sinkronisasi Harian
+git add .
+git commit -m "Update: Selesai mengerjakan analisis [sebutkan bagian]"
+git push origin main
+
