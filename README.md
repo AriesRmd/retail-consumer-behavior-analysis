@@ -29,3 +29,28 @@ Sesuai dengan kebutuhan proyek, analisis ini mencakup:
 ├── dashboard/              # Power BI (.pbix) or Dashboard Screenshots
 ├── reports/                # Project Summary & Presentation
 └── README.md               # Project Documentation
+
+## 🚀 Panduan Pengembangan Antar Perangkat (PC Rumah/Kantor/Laptop)
+
+Gunakan panduan ini untuk memastikan lingkungan kerja kamu selalu sinkron dan tidak ada error tipe data saat berpindah perangkat.
+
+### 1. Prasyarat Sistem
+Pastikan alat berikut sudah terinstal di setiap PC yang kamu gunakan:
+* **Git**: [Unduh di sini](https://git-scm.com/)
+* **uv** (Python Manager): Jalankan perintah ini di PowerShell:
+    ```powershell
+    powershell -ExecutionPolicy ByPass -c "irm [https://astral.sh/uv/install.ps1](https://astral.sh/uv/install.ps1) | iex"
+    ```
+
+### 2. Setup Pertama Kali (PC Baru)
+Jika kamu baru pertama kali mengerjakan proyek ini di suatu PC:
+```powershell
+# Clone repository
+git clone [https://github.com/USERNAME_KAMU/retail-consumer-behavior-analysis.git](https://github.com/USERNAME_KAMU/retail-consumer-behavior-analysis.git)
+
+# Masuk ke folder proyek
+cd "D:\Path\Ke\Folder\Proyek"
+
+# Sinkronisasi otomatis (Instal Python 3.13 & Library)
+uv sync
+
