@@ -6,6 +6,7 @@
 #     "numpy>=2.4.1",
 #     "pandas>=2.3.3",
 #     "plotly>=6.5.2",
+#     "pyarrow>=23.0.0",
 #     "pyzmq>=27.1.0",
 #     "sqlglot>=28.6.0",
 # ]
@@ -13,7 +14,7 @@
 
 import marimo
 
-__generated_with = "0.19.5"
+__generated_with = "0.19.4"
 app = marimo.App()
 
 
@@ -26,7 +27,7 @@ def _():
 
     # Memuat dataset dari folder data
     # Ganti 'nama_file.csv' dengan nama file asli di folder data kamu
-    file_path = r'D:\Workspace Aries\PROJECT\retail-consumer-behavior-analysis\data\customer_shopping_behavior.csv'
+    file_path = r'D:\Aries\PROJECT\retail-consumer-behavior-analysis\data\customer_shopping_behavior.csv'
     df= pd.read_csv(file_path)
     return df, mo, pd
 
@@ -520,6 +521,57 @@ def _(df2, mo):
     )
 
     mo.ui.plotly(fig)
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    Q10: What is the revenue distribution of each age group
+    """)
+    return
+
+
+@app.cell
+def _(mo):
+    _df = mo.sql(
+        f"""
+        select
+            age_group,
+            sum(revenue) as total_revenue
+        from df2
+        group by 1
+        order by 2 desc
+        """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    _df = mo.sql(
+        f"""
+        select *
+        from df2
+        limit 5
+        """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    # Simpan Data df2
+    """)
+    return
+
+
+@app.cell
+def _():
+    # # Jalankan ini jika Parquet masih bermasalah
+    # df2.to_csv(r'D:\Aries\PROJECT\retail-consumer-behavior-analysis\data\cleaned_customer_behavior.csv', index=False)
+    # print("✅ File CSV berhasil disimpan sebagai alternatif.")
     return
 
 
