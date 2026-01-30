@@ -1,5 +1,8 @@
 # Consumer Shopping Behavior & Marketing Strategy Analysis
 
+## 📊 Dashboard Preview
+![Retail Consumer Dashboard](dashboard/dashboard.png)
+
 ## 📌 Project Overview
 Proyek ini bertujuan untuk menganalisis perilaku belanja pelanggan pada sebuah perusahaan retail terkemuka guna meningkatkan penjualan, kepuasan pelanggan, dan loyalitas jangka panjang. Melalui analisis ini, kita akan mengungkap bagaimana faktor-faktor seperti demografi, kategori produk, saluran penjualan, dan promosi memengaruhi keputusan pembelian.
 
